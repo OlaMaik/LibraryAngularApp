@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-lg-5 card">
+        <div class="card-body">
+            <div class="vh-100">
+                <div class="container-fluid">
+
+                    <div class="text-black">
+              
+                      <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+              
+                        <form id="loginForm" style="width: 23rem;" ngNativeValidate (ngSubmit)="login()">
+              
+                          <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+              
+                          <div class="form-outline mb-4">
+                            <input type="email" required [(ngModel)]="loginModel.email" name="form2Example18" class="form-control form-control-lg" />
+                            <label class="form-label" for="form2Example18">Email address</label>
+                          </div>
+              
+                          <div class="form-outline mb-4">
+                            <input required [(ngModel)]="loginModel.password" type="password" name="form2Example28" class="form-control form-control-lg" />
+                            <label class="form-label" for="form2Example28">Password</label>
+                          </div>
+              
+                          <div class="pt-1 mb-4">
+                            <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
+                          </div>       
+                        </form>
+              
+                      </div>
+              
+    
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 card">
+        <div class="card-body">
+            <div class="vh-100">
+                <div class="container-fluid">
+
+                    <div class="text-black">
+     
+                      <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+              
+                        <form id ="registerForm" style="width: 23rem;" ngNativeValidate (ngSubmit)="register()">
+              
+                          <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrate</h3>
+                          <div class="form-outline mb-4">
+                            <input type="email" required [(ngModel)]="registrationModel.Email" name="form2Example181" class="form-control form-control-lg" />
+                            <label class="form-label" for="form2Example18">Email address</label>
+                          </div>
+              
+                          <div class="form-outline mb-4">
+                            <input  required [(ngModel)]="registrationModel.Password" type="password" name="form2Example28" class="form-control form-control-lg" />
+                            <label class="form-label" for="form2Example281">Password</label>
+                          </div>
+                          <div class="form-outline mb-4">
+                            <input  required [(ngModel)]="confirmationPassword" type="text" name="confirmationPassword" class="form-control form-control-lg" />
+                            <label class="form-label" for="confirmationPassword">Confirm password</label>
+                          </div>
+                          <div class="form-outline mb-4">
+                            <input  required [(ngModel)]="registrationModel.Name" type="text" name="name" class="form-control form-control-lg" />
+                            <label class="form-label" for="name">Name</label>
+                          </div>
+                          <div class="form-outline mb-4">
+                            <input  required [(ngModel)]="registrationModel.Adress" type="text" name="adress" class="form-control form-control-lg" />
+                            <label class="form-label" for="adress">Address</label>
+                          </div>
+                          <div class="form-outline mb-4">
+                            <input  required [(ngModel)]="registrationModel.Phone" type='text' mask='(000) 000-0000' name="phone" class="form-control form-control-lg" />
+                            <label class="form-label" for="phone">Phone</label>
+                          </div>
+                          <div class="form-outline mb-4">
+                            <input  required [(ngModel)]="registrationModel.Birthday" type="date" name="birthday" class="form-control form-control-lg" />
+                            <label class="form-label" for="birthday">Birthday</label>
+                          </div>
+                          <div class="pt-1 mb-4">
+                            <button class="btn btn-info btn-lg btn-block" type="submit">Registrate</button>
+                          </div>       
+                        </form>
+              
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

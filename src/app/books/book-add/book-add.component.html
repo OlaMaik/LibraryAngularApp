@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-lg-12">
+        <div class="row d-flex justify-content-center m-5">
+            <div class="col-lg-7">
+                <form ngNativeValidate (ngSubmit)="addBook()">
+                    <div class="form-group m-3">
+                        <label for="title">Book title</label>
+                        <input required [(ngModel)]="title" type="text" class="form-control" name="title"
+                            aria-describedby="emailHelp" placeholder="Enter book title" />
+                    </div>
+                    <div class="form-group m-3">
+                        <label for="writer">Book writer</label>
+                        <input required [(ngModel)]="writer" type="text" class="form-control" name="writer"
+                            aria-describedby="emailHelp" placeholder="Enter book writer">
+                    </div>
+                    <div class="form-group m-3">
+                        <label for="publisher">Book publisher</label>
+                        <input required [(ngModel)]="publisher" type="text" class="form-control" name="publisher"
+                            aria-describedby="emailHelp" placeholder="Enter book publisher">
+                    </div>
+                    <div class="form-group m-3">
+                        <label for="date">Book date</label>
+                        <input required [(ngModel)]="date" type="date" class="form-control" name="date"
+                            aria-describedby="emailHelp" placeholder="Enter book date">
+                    </div>
+                    <div class="form-group m-3">
+                        <label for="date">Book img</label>
+                        <input type="file" (change)="selectImage($event)" name="img" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
