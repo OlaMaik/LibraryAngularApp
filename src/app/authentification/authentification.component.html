@@ -1,91 +1,142 @@
-<div class="row">
-    <div class="col-lg-5 card">
-        <div class="card-body">
-            <div class="vh-100">
-                <div class="container-fluid">
+<div class="row p-3 h-75 d-flex justify-content-between">
+  <div class="col-lg-5 ">
+    <div class="card-body ">
+      <div class="vh-100">
+        <div class="container-fluid">
 
-                    <div class="text-black">
-              
-                      <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-              
-                        <form id="loginForm" style="width: 23rem;" ngNativeValidate (ngSubmit)="login()">
-              
-                          <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
-              
-                          <div class="form-outline mb-4">
-                            <input type="email" required [(ngModel)]="loginModel.email" name="form2Example18" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example18">Email address</label>
-                          </div>
-              
-                          <div class="form-outline mb-4">
-                            <input required [(ngModel)]="loginModel.password" type="password" name="form2Example28" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example28">Password</label>
-                          </div>
-              
-                          <div class="pt-1 mb-4">
-                            <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
-                          </div>       
-                        </form>
-              
-                      </div>
-              
-    
+          <div class="text-black">
+
+            <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+              <form [formGroup]="loginForm" style="width: 23rem;" ngNativeValidate (ngSubmit)="login()">
+
+                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example18">Email address</label>
+                  <input (click)="test(loginForm.controls['loginEmail'])" type="email" required formControlName="loginEmail" name="form2Example18"
+                    class="form-control form-control-lg" />
+                    <div class="m-0 p-0"*ngIf="loginForm.controls['loginEmail'].invalid && (loginForm.controls['loginEmail'].dirty || loginForm.controls['loginEmail'].touched)" class="alert">
+                      <div class="m-0 p-0" *ngIf="loginForm.controls['loginEmail'].errors.required">
+                      Please enter email
+                    </div>
+                    <div class="m-0 p-0"  *ngIf="loginForm.controls['loginEmail'].errors.email">
+                      Please enter email with @
+                    </div>
                   </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-5 card">
-        <div class="card-body">
-            <div class="vh-100">
-                <div class="container-fluid">
 
-                    <div class="text-black">
-     
-                      <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-              
-                        <form id ="registerForm" style="width: 23rem;" ngNativeValidate (ngSubmit)="register()">
-              
-                          <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrate</h3>
-                          <div class="form-outline mb-4">
-                            <input type="email" required [(ngModel)]="registrationModel.Email" name="form2Example181" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example18">Email address</label>
-                          </div>
-              
-                          <div class="form-outline mb-4">
-                            <input  required [(ngModel)]="registrationModel.Password" type="password" name="form2Example28" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example281">Password</label>
-                          </div>
-                          <div class="form-outline mb-4">
-                            <input  required [(ngModel)]="confirmationPassword" type="text" name="confirmationPassword" class="form-control form-control-lg" />
-                            <label class="form-label" for="confirmationPassword">Confirm password</label>
-                          </div>
-                          <div class="form-outline mb-4">
-                            <input  required [(ngModel)]="registrationModel.Name" type="text" name="name" class="form-control form-control-lg" />
-                            <label class="form-label" for="name">Name</label>
-                          </div>
-                          <div class="form-outline mb-4">
-                            <input  required [(ngModel)]="registrationModel.Adress" type="text" name="adress" class="form-control form-control-lg" />
-                            <label class="form-label" for="adress">Address</label>
-                          </div>
-                          <div class="form-outline mb-4">
-                            <input  required [(ngModel)]="registrationModel.Phone" type='text' mask='(000) 000-0000' name="phone" class="form-control form-control-lg" />
-                            <label class="form-label" for="phone">Phone</label>
-                          </div>
-                          <div class="form-outline mb-4">
-                            <input  required [(ngModel)]="registrationModel.Birthday" type="date" name="birthday" class="form-control form-control-lg" />
-                            <label class="form-label" for="birthday">Birthday</label>
-                          </div>
-                          <div class="pt-1 mb-4">
-                            <button class="btn btn-info btn-lg btn-block" type="submit">Registrate</button>
-                          </div>       
-                        </form>
-              
-                      </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example28">Password</label>
+                  <input required formControlName="loginPassword"  type="password" name="form2Example28"
+                    class="form-control form-control-lg" />
+                  <div class="m-0 p-0" *ngIf="loginForm.controls['loginPassword'].invalid && (loginForm.controls['loginPassword'].dirty || loginForm.controls['loginPassword'].touched)" class="alert">
+                    <div class="m-0 p-0" *ngIf="loginForm.controls['loginPassword'].errors.required">
+                    Please enter password
                   </div>
                 </div>
+                </div>
+
+                <div class="pt-1 mb-4">
+                  <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
+                </div>
+              </form>
+
             </div>
+
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card-body">
+      <div class="vh-100">
+        <div class="container-fluid">
+
+          <div class="text-black">
+
+            <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+              <form id="registerForm" [formGroup]="registrationForm" style="width: 23rem;" ngNativeValidate (ngSubmit)="register()">
+
+                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrate</h3>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example18">Email address</label>
+                  <input type="email" formControlName="registrationEmail"  required  name="form2Example181"
+                    class="form-control form-control-lg" />
+                    <div class="m-0 p-0"*ngIf="registrationForm.controls['registrationEmail'].invalid && (registrationForm.controls['registrationEmail'].dirty || registrationForm.controls['registrationEmail'].touched)" class="alert">
+                      <div class="m-0 p-0" *ngIf="registrationForm.controls['registrationEmail'].errors.required">
+                      Please enter email
+                    </div>
+                    <div class="m-0 p-0"  *ngIf="registrationForm.controls['registrationEmail'].errors.email">
+                      Please enter email with @
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example281">Password</label>
+                  <input formControlName="registrationPassword" required id="regPas" type="password" name="form2Example28"
+                    class="form-control form-control-lg" />
+                    <div class="m-0 p-0"*ngIf="registrationForm.controls['registrationPassword'].invalid && (registrationForm.controls['registrationPassword'].dirty || registrationForm.controls['registrationPassword'].touched)" class="alert">
+                      <div class="m-0 p-0" *ngIf="registrationForm.controls['registrationPassword'].errors.required">
+                      Please enter password
+                    </div>
+                    <div (click)="test(registrationForm.controls['registrationPassword'].errors)" class="m-0 p-0"  *ngIf="registrationForm.controls['registrationPassword'].errors.pattern">
+                      Please enter minimum 6 symbols at least 1 of them must be lowee case, upper case and digital
+                    </div>
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="confirmationPassword">Confirm password</label>
+                  <input required formControlName="registrationConfirmationPassword" type="password" name="confirmationPassword"
+                    class="form-control form-control-lg" />
+                    <div class="m-0 p-0"*ngIf="registrationForm.controls['registrationConfirmationPassword'].invalid && (registrationForm.controls['registrationConfirmationPassword'].dirty || registrationForm.controls['registrationConfirmationPassword'].touched)" class="alert">
+                      <div class="m-0 p-0" *ngIf="registrationForm.controls['registrationConfirmationPassword'].errors.required">
+                      Please enter confirmation password
+                    </div>
+                    <div (click)="test(registrationForm.controls['registrationConfirmationPassword'].errors)" class="m-0 p-0"  *ngIf="registrationForm.controls['registrationConfirmationPassword'].errors.errorCpw">
+                      Confirmation password must mutch password
+                    </div>
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="name">Name</label>
+                  <input required formControlName="name" type="text" name="name"
+                    class="form-control form-control-lg" />
+                    <div class="m-0 p-0"*ngIf="registrationForm.controls['name'].invalid && (registrationForm.controls['name'].dirty || registrationForm.controls['name'].touched)" class="alert">
+                      <div class="m-0 p-0" *ngIf="registrationForm.controls['name'].errors.required">
+                      Please enter name
+                    </div>
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="adress">Address</label>
+                  <input required  formControlName="adress" type="text" name="adress"
+                    class="form-control form-control-lg" />
+                </div>
+                <div class=" mb-4">
+                  <label class="form-label" for="phone">Phone</label>
+                  <input [inputMask]="licenseInputMask" [formControl]="licenseFC" placeholder="___-___-___" required
+                   name="phone" formControlName="phone" class="form-control form-control-lg" />
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="birthday">Birthday</label>
+                  <input  formControlName="birthday" required type="date" name="birthday"
+                    class="form-control form-control-lg" />
+                </div>
+                <div class="pt-1 mb-4">
+                  <button class="btn btn-info btn-lg btn-block" type="submit">Registrate</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

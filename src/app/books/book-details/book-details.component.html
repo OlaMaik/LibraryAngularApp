@@ -1,1 +1,30 @@
-<p>book-details works!</p>
+<div class="row d-flex justify-content-center" *ngIf="book$|async as book">
+
+  <div class="col-lg-8 card">
+    <img class="card-img-top" [src]="book.ImgUrl" alt="No image was added">
+    <div class="card-header">
+      <h5 class="card-title">{{book.Name}}</h5>
+    </div>
+    <div class="card-body">
+
+
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="row">Writer: {{book.Writer}}</div>
+          <div class="row">Publisher: {{book.Publisher}}</div>
+          <div class="row">Writed year: {{book.Date| date}}</div>
+        </div>
+        <div class="col-lg-5">
+          <button *ngIf="canDelete" (click)="delete()"
+            class=" btn btn-danger row d-flex justify-content-left mb-3 w-25">Delete</button>
+          <a *ngIf="canEdit" [routerLink]="['/book-edit', id]"
+            class=" btn btn-success row d-flex justify-content-left mb-3 w-25">Edit</a>
+          <button *ngIf="canGet" (click)="changeReserveStatus()"
+            class=" btn btn-primary row d-flex justify-content-left mb-3 w-25">Reserve</button>
+          <button *ngIf="canReturn" (click)="changeReserveStatus()"
+            class=" btn btn-primary row d-flex justify-content-left mb-3 w-25">Return</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

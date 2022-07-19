@@ -5,6 +5,7 @@ import { LoginModel } from 'src/models/login.model';
 import { Registration } from 'src/models/registration.model';
 import jwt_decode from 'jwt-decode';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,9 +25,10 @@ export class AuthService {
           localStorage.setItem('token', data["access_token"]);
           const tokenInfo = this.getDecodedAccessToken(data["access_token"]);
           localStorage.setItem('id', tokenInfo["Id"]);
-
+          alert("Successfully logged in!");
+          window.location.href="";
         },
-        error => alert(error.error.error_description)
+        error =>{}
       );
   }
 
@@ -38,8 +40,19 @@ export class AuthService {
           alert(data)
 
         },
-        error => alert(error.error)
       );
+  }
+  logout()
+  {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    window.location.href="/registration";
+
+  }
+  getCurrentUser():string
+  {
+    return localStorage.getItem("id");
+
   }
 
   getDecodedAccessToken(token: string): any {
