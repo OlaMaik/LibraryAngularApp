@@ -10,6 +10,7 @@ import { Book } from 'src/models/book.model';
 })
 export class BooksListComponent implements OnInit {
   books$: Observable<Book[]>;
+  order: string = "Name";
   constructor(private bookService: BooksService) { }
 
   ngOnInit(): void {

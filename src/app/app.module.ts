@@ -17,6 +17,9 @@ import { TokenInterceptor } from './services/token.interceptor';
 import { ResponseInterceptor } from './services/response.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputMaskModule } from '@ngneat/input-mask';
+import { OrderByPipe } from '../books-order-pipe';
+import { BookCardComponent } from './books/book-card/book-card.component';
+import { AdressFormComponent } from './authentification/adress-form/adress-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { InputMaskModule } from '@ngneat/input-mask';
     BookAddComponent,
     BookDetailsComponent,
     AuthentificationComponent,
-    BookEditComponent
+    BookEditComponent,
+    OrderByPipe,
+    BookCardComponent,
+    AdressFormComponent 
   ],
   imports: [
     BrowserModule,

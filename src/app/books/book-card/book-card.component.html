@@ -1,0 +1,9 @@
+
+     
+    <img class="card-img-top" [src]="book.ImgUrl" alt="No image was added">
+    <div class="card-body">
+      <h5 class="card-title">{{book.Name}}</h5>
+      <p class="card-text">{{book.Writer}}</p>
+      <a [routerLink] = "['/book-details', book.Id]" class="btn btn-primary">Details</a>
+    </div>          
+
