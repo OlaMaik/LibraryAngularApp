@@ -14,7 +14,7 @@
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form2Example18">Email address</label>
-                  <input (click)="test(loginForm.controls['loginEmail'])" type="email" required formControlName="loginEmail" name="form2Example18"
+                  <input  type="email" required formControlName="loginEmail" name="form2Example18"
                     class="form-control form-control-lg" />
                     <div class="m-0 p-0 text-danger"*ngIf="loginForm.controls['loginEmail'].invalid && (loginForm.controls['loginEmail'].dirty || loginForm.controls['loginEmail'].touched)" class="alert">
                       <div class="m-0 p-0 text-danger" *ngIf="loginForm.controls['loginEmail'].errors.required">
@@ -112,7 +112,7 @@
                     </div>
                   </div>
                 </div>
- <app-adress-form (formUpdated)="adressFormUpdated($event)"></app-adress-form>
+ <app-adress-form (formUpdated)="adressFormUpdated($event)" [mainFormSubmitted] ="mainFormSubmitted"></app-adress-form>
                 <div class=" mb-4">
                   <label class="form-label" for="phone">Phone</label>
                   <input [inputMask]="licenseInputMask" [formControl]="licenseFC" placeholder="___-___-___" required
@@ -137,7 +137,7 @@
                   </div>
                 </div>
                 <div class="pt-1 mb-4">
-                  <button class="btn btn-info btn-lg btn-block" type="submit">Registrate</button>
+                  <button  class="btn btn-info btn-lg btn-block" type="submit">Registrate</button>
                 </div>
               </form>
 

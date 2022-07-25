@@ -12,6 +12,8 @@ export class AdressFormComponent implements OnInit {
   adressForm: FormGroup;
   @Output()
   formUpdated = new EventEmitter<FormGroup>();
+  @Input()
+  mainFormSubmitted:boolean;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class AdressFormComponent implements OnInit {
       city: ["", Validators.compose([Validators.required])],
       street: ["", Validators.compose([Validators.required])],
       house: ["", Validators.compose([Validators.required])],
-      appartment: [""]
+      appartment: ["", Validators.compose([Validators.pattern("[0-9.]+")])]
     });
   }
 }

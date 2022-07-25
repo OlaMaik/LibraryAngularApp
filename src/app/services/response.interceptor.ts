@@ -34,7 +34,6 @@ export class ResponseInterceptor implements HttpInterceptor {
           }
         }
         else if (response && response.status === 404) {
-          window.location.href = '';
           alert(response.error);
       
         }

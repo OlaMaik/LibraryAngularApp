@@ -3,7 +3,7 @@
     <label class="form-label" for="adress">Country</label>
     <input (change) = "adressFormUpdated()" required  formControlName="country" type="text" name="adress"
       class="form-control form-control-lg" />
-      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['country'].invalid && (adressForm.controls['country'].dirty || adressForm.controls['country'].touched)" class="alert">
+      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['country'].invalid && (adressForm.controls['country'].dirty || adressForm.controls['country'].touched || mainFormSubmitted)" class="alert">
         <div class="m-0 p-0 text-danger" *ngIf="adressForm.controls['country'].errors.required">
         Please enter country
       </div>
@@ -13,7 +13,7 @@
     <label class="form-label" for="adress">City</label>
     <input (change) = "adressFormUpdated()" required  formControlName="city" type="text" name="adress"
       class="form-control form-control-lg" />
-      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['city'].invalid && (adressForm.controls['city'].dirty || adressForm.controls['city'].touched)" class="alert">
+      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['city'].invalid && (adressForm.controls['city'].dirty || adressForm.controls['city'].touched || mainFormSubmitted)" class="alert">
         <div class="m-0 p-0 text-danger" *ngIf="adressForm.controls['city'].errors.required">
         Please enter city
       </div>
@@ -23,7 +23,7 @@
     <label class="form-label" for="adress">Street</label>
     <input (change) = "adressFormUpdated()" required  formControlName="street" type="text" name="adress"
       class="form-control form-control-lg" />
-      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['street'].invalid && (adressForm.controls['street'].dirty || adressForm.controls['street'].touched)" class="alert">
+      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['street'].invalid && (adressForm.controls['street'].dirty || adressForm.controls['street'].touched || mainFormSubmitted)" class="alert">
         <div class="m-0 p-0 text-danger" *ngIf="adressForm.controls['street'].errors.required">
         Please enter street
       </div>
@@ -33,7 +33,7 @@
     <label class="form-label" for="house">House</label>
     <input (change) = "adressFormUpdated()" required  formControlName="house" type="text" name="house"
       class="form-control form-control-lg" />
-      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['house'].invalid && (adressForm.controls['house'].dirty || adressForm.controls['house'].touched)" class="alert">
+      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['house'].invalid && (adressForm.controls['house'].dirty || adressForm.controls['house'].touched || mainFormSubmitted)" class="alert">
         <div class="m-0 p-0 text-danger" *ngIf="adressForm.controls['house'].errors.required">
         Please enter house number
       </div>
@@ -43,5 +43,10 @@
     <label class="form-label" for="Appartment">Appartment</label>
     <input (change) = "adressFormUpdated()" required  formControlName="appartment" type="text" name="appartment"
       class="form-control form-control-lg" />
+      <div class="m-0 p-0 text-danger"*ngIf="adressForm.controls['appartment'].invalid && (adressForm.controls['appartment'].dirty || adressForm.controls['appartment'].touched || mainFormSubmitted)" class="alert">
+        <div class="m-0 p-0 text-danger" *ngIf="adressForm.controls['appartment'].errors.pattern">
+       Only numbers
+      </div>
+    </div>
   </div>
 </form>

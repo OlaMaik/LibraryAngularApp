@@ -1,3 +1,4 @@
+import { invalid } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { createMask } from '@ngneat/input-mask';
@@ -22,6 +23,7 @@ export class AuthentificationComponent implements OnInit {
   loginForm: FormGroup;
   adressForm: FormGroup;
   registrationForm: FormGroup;
+  mainFormSubmitted: boolean = false;
   constructor(private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -38,7 +40,6 @@ export class AuthentificationComponent implements OnInit {
       registrationPassword: ["", Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$")])],
       registrationConfirmationPassword: ["", Validators.compose([Validators.required, this.ValidateCpw])],
       name: ["", Validators.compose([Validators.required])],
-      adress: [this.adressForm, Validators.compose([Validators.required, this.ValidateAdressForm])],
       phone: ["", Validators.compose([Validators.required])],
       birthday: ["", Validators.compose([Validators.required, this.ValidateDate])],
 
@@ -52,11 +53,7 @@ export class AuthentificationComponent implements OnInit {
     }
     return { errorCpw: true };
   }
-  ValidateAdressForm(control: AbstractControl) {
-    var co = control.value;
-    return null;
 
-  }
 
   ValidateDate(control: AbstractControl) {
     if (new Date(control.value) < new Date()) {
@@ -73,17 +70,18 @@ export class AuthentificationComponent implements OnInit {
 
   }
   adressFormUpdated(adressForm: FormGroup) {
-    console.log(adressForm);
+    this.adressForm = adressForm;
   }
 
-  test(errors) {
-    console.log(errors);
+  test() {
+    this.mainFormSubmitted = !this.mainFormSubmitted;
   }
   register(): void {
-    if (this.registrationForm.status == "INVALID") return;
+    this.mainFormSubmitted =true;
+    if (this.registrationForm.status == "INVALID" || this.adressForm == null || this.adressForm.status == "INVALID") return;
     var registrationModel: Registration = {
       Email: this.registrationForm.controls['registrationEmail'].value,
-      Adress: this.registrationForm.controls['adress'].value,
+      Adress: this.formAdress(),
       Password: this.registrationForm.controls['registrationPassword'].value,
       Name: this.registrationForm.controls['name'].value,
       Phone: this.registrationForm.controls['phone'].value,
@@ -92,6 +90,15 @@ export class AuthentificationComponent implements OnInit {
     this.authService.registration(registrationModel);
     (<HTMLFormElement>document.getElementById("registerForm")).reset();
 
+  }
+
+  formAdress(): string {
+    if (this.adressForm == null) return "";
+    return this.adressForm.controls['country'].value + " " +
+      this.adressForm.controls['city'].value + " " +
+      this.adressForm.controls['street'].value + " " +
+      this.adressForm.controls['house'].value + " " +
+      this.adressForm.controls['appartment'].value;
   }
 
 }
